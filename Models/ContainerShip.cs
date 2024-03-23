@@ -19,14 +19,27 @@ public class ContainerShip
         MaxContainerWeight = maxContainerWeight;
     }
 
-    public bool LoadContainerOnShip(Container container)
+    public double CalculateShipLoad()
     {
-        double currentContainerWeight=0;
-        foreach (Container cont in LoadedContainers)
+        if (LoadedContainers.Any())
         {
-            currentContainerWeight += cont.MasaLadunku + cont.WagaWlasna;
+            double currentContainerWeight=0;
+            foreach (Container cont in LoadedContainers)
+            {
+                currentContainerWeight += cont.MasaLadunku + cont.WagaWlasna;
+            }
+
+            return currentContainerWeight;
+        }
+        else
+        {
+            return 0;
         }
 
+    }
+    public bool LoadContainerOnShip(Container container)
+    {
+        double currentContainerWeight=CalculateShipLoad();
         double updatedContainerWeight = currentContainerWeight + container.MasaLadunku+container.WagaWlasna;
         if (LoadedContainers.Count + 1> MaxContainerAmount)
         {
@@ -44,16 +57,11 @@ public class ContainerShip
     }
     public bool LoadContainerOnShip(List<Container> containerList)
     {
-        double currentContainerOnShipWeight=0;
-        foreach (Container cont in LoadedContainers)
-        {
-            currentContainerOnShipWeight += cont.MasaLadunku;
-        }
-
+        double currentContainerOnShipWeight=CalculateShipLoad();
         double containerListWeight = 0;
         foreach (Container cont in containerList)
         {
-            containerListWeight += cont.MasaLadunku;
+            containerListWeight += cont.MasaLadunku+cont.WagaWlasna;
         }
         
         double updatedContainerWeight = currentContainerOnShipWeight + containerListWeight;
