@@ -28,7 +28,7 @@ public class ContainerShip
         }
 
         double updatedContainerWeight = currentContainerWeight + container.MasaLadunku+container.WagaWlasna;
-        if (LoadedContainers.Count() + 1> _maxContainerAmount)
+        if (LoadedContainers.Count + 1> _maxContainerAmount)
         {
             Console.WriteLine("Ten statek nie moze zmiescic wiecej kontenerow");
             return false;
@@ -124,7 +124,7 @@ public class ContainerShip
     public void DisplayCargo()
     {
         Console.WriteLine("Zaladowane kontenery:");
-        if (LoadedContainers.Count() > 0)
+        if (LoadedContainers.Any())
         {
             foreach (var container in LoadedContainers)
             {

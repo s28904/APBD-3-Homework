@@ -5,7 +5,7 @@ namespace APBD_3.Models;
 public abstract class Container 
 {
     // kg
-    public double MasaLadunku { get; set; }
+    public double MasaLadunku { get; protected set; }
     public double WagaWlasna { get; }
     public double MaksymalnaLadownosc { get; }
 
@@ -13,9 +13,9 @@ public abstract class Container
     private double _wysokoscKontenera;
     private double _glebokoscKontenera;
 
-    public string NumerSeryjny { get; set; }
+    public string NumerSeryjny { get; private set; }
 
-    private static int _kontenerId = 0;
+    private static int _kontenerId;
     public LoadType AcceptableType { get; }
     
   
@@ -34,7 +34,7 @@ public abstract class Container
         MasaLadunku = 0;
     }
 
-    public void GenerateContainerSerialNumber(string containerType)
+    protected void GenerateContainerSerialNumber(string containerType)
     {
         NumerSeryjny = "KON-" + containerType.ToUpper() +"-"+ _kontenerId;
     }
