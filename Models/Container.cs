@@ -16,7 +16,7 @@ public abstract class Container
     public string NumerSeryjny { get; set; }
 
     private static int _kontenerId = 0;
-    public LoadType AcceptableType;
+    public LoadType AcceptableType { get; }
     
   
     public Container(double wagaWlasna, double wysokoscKontenera, double glebokoscKontenera, double maksymalnaLadownosc, LoadType acceptableType)
