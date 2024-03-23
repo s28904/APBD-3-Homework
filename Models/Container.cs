@@ -10,8 +10,8 @@ public abstract class Container
     public double MaksymalnaLadownosc { get; }
 
     // cm
-    private double _wysokoscKontenera;
-    private double _glebokoscKontenera;
+    public double WysokoscKontenera { get; }
+    public double GlebokoscKontenera { get; }
 
     public string NumerSeryjny { get; private set; }
 
@@ -22,8 +22,8 @@ public abstract class Container
     public Container(double wagaWlasna, double wysokoscKontenera, double glebokoscKontenera, double maksymalnaLadownosc, LoadType acceptableType)
     {
         WagaWlasna = wagaWlasna;
-        _wysokoscKontenera = wysokoscKontenera;
-        _glebokoscKontenera = glebokoscKontenera;
+        WysokoscKontenera = wysokoscKontenera;
+        GlebokoscKontenera = glebokoscKontenera;
         MaksymalnaLadownosc = maksymalnaLadownosc;
         AcceptableType = acceptableType;
         _kontenerId++;
@@ -56,7 +56,7 @@ public abstract class Container
         return "Kontener " + NumerSeryjny + ": Masa Ladunku:" + MasaLadunku + "kg" + " | Waga Wlasna:" + WagaWlasna +
                "kg"
                + " | Maksymalna Ladownosc:" + MaksymalnaLadownosc + "kg"
-               + " | Wysokosc Kontenera:" + _wysokoscKontenera + "cm"
-               + " | Glebokosc Kontenera:" + _glebokoscKontenera + "cm";
+               + " | Wysokosc Kontenera:" + WysokoscKontenera + "cm"
+               + " | Glebokosc Kontenera:" + GlebokoscKontenera + "cm";
     }
 }

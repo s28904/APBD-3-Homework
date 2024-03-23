@@ -2,21 +2,21 @@ namespace APBD_3.Models;
 
 public class ContainerShip
 {
-    private double _speed;
-    public List<Container> LoadedContainers;
-    private int _maxContainerAmount;
+    public double Speed { get; }
+    public List<Container> LoadedContainers { get; set; }
+    public int MaxContainerAmount { get; set; }
     // tony
-    private double _maxContainerWeight;
-    public string ShipName;
+    public double MaxContainerWeight { get; set; }
+    public string ShipName { get; }
 
     
     public ContainerShip(string shipName, double speed, int maxContainerAmount, double maxContainerWeight)
     {
         ShipName = shipName;
         LoadedContainers = new List<Container>();
-        _speed = speed;
-        _maxContainerAmount = maxContainerAmount;
-        _maxContainerWeight = maxContainerWeight;
+        Speed = speed;
+        MaxContainerAmount = maxContainerAmount;
+        MaxContainerWeight = maxContainerWeight;
     }
 
     public bool LoadContainerOnShip(Container container)
@@ -28,12 +28,12 @@ public class ContainerShip
         }
 
         double updatedContainerWeight = currentContainerWeight + container.MasaLadunku+container.WagaWlasna;
-        if (LoadedContainers.Count + 1> _maxContainerAmount)
+        if (LoadedContainers.Count + 1> MaxContainerAmount)
         {
             Console.WriteLine("Ten statek nie moze zmiescic wiecej kontenerow");
             return false;
         }
-        if ( updatedContainerWeight>=(_maxContainerWeight*1000))
+        if ( updatedContainerWeight>=(MaxContainerWeight*1000))
         {
             Console.WriteLine("Ten kontener jest za ciezki zeby go zaladowac");
             return false;
@@ -57,12 +57,12 @@ public class ContainerShip
         }
         
         double updatedContainerWeight = currentContainerOnShipWeight + containerListWeight;
-        if (LoadedContainers.Count + containerList.Count > _maxContainerAmount)
+        if (LoadedContainers.Count + containerList.Count > MaxContainerAmount)
         {
             Console.WriteLine("Ten statek nie moze zmiescic wiecej kontenerow");
             return false;
         } 
-        if ( updatedContainerWeight>=(_maxContainerWeight*1000))
+        if ( updatedContainerWeight>=(MaxContainerWeight*1000))
         {
             Console.WriteLine("Te kontenery sa za ciezkie");
             return false;
@@ -141,8 +141,8 @@ public class ContainerShip
 
     public override string ToString()
     {
-        return "Nazwa:" + ShipName + "| Prędkość:" + _speed + " wezłów" + "| Maksymalna liczba kontenerow:" +
-               _maxContainerAmount + "| Maksymalna waga kontenerów:" + _maxContainerWeight+"ton";
+        return "Nazwa:" + ShipName + "| Prędkość:" + Speed + " wezłów" + "| Maksymalna liczba kontenerow:" +
+               MaxContainerAmount + "| Maksymalna waga kontenerów:" + MaxContainerWeight+"ton";
     }
     
     

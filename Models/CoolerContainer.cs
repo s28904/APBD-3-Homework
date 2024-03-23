@@ -4,7 +4,7 @@ namespace APBD_3.Models;
 
 public class CoolerContainer : Container
 {
-    public double TempInContainer;
+    public double TempInContainer { get; set; }
     public CoolerContainer(double wagaWlasna, double wysokoscKontenera, double glebokoscKontenera,double maksymalnaLadownosc, double tempInContainer, LoadType acceptableType) 
         : base(wagaWlasna,wysokoscKontenera,glebokoscKontenera,maksymalnaLadownosc,acceptableType)
     {

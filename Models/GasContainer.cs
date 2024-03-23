@@ -4,13 +4,13 @@ namespace APBD_3.Models;
 
 public class GasContainer : Container,IHazardNotifier
 {
-    private double _cisnienie;
+    public double Cisnienie { get; set; }
 
     public GasContainer(double wagaWlasna, double wysokoscKontenera, double glebokoscKontenera,double maksymalnaLadownosc, LoadType acceptableType, double cisnienie) 
         : base(wagaWlasna,wysokoscKontenera,glebokoscKontenera,maksymalnaLadownosc,acceptableType)
     {
         GenerateContainerSerialNumber("G");
-        _cisnienie = cisnienie;
+        Cisnienie = cisnienie;
     }
 
     public void HazardousNotification()
@@ -45,6 +45,6 @@ public class GasContainer : Container,IHazardNotifier
 
     public override string ToString()
     {
-        return base.ToString() + " | Cisnienie:"+_cisnienie+" atmosfer";
+        return base.ToString() + " | Cisnienie:"+Cisnienie+" atmosfer";
     }
 }
